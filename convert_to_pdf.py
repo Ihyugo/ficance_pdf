@@ -2,9 +2,9 @@ import os
 import glob
 import re
 from PIL import Image
-
 import img2pdf
 import os
+
 pdf_file_name = "output.pdf"
 path = "./"
 ext = ".jpeg"
