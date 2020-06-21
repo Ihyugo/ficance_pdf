@@ -17,7 +17,6 @@ def main():
     open_finance_pdf()
     move_to_pdf_data()
     make_png_file()
-    make_png_file_by_id()
 
 
 
@@ -40,8 +39,7 @@ def open_finance_pdf():
         options[-2].click()
     tab_list = driver.window_handles
     driver.switch_to.window(tab_list[1])
-    driver.maximize_window()
-    time.sleep(3)
+    driver.set_window_size(940,780)
 
 
 def move_to_pdf_data():
@@ -49,18 +47,11 @@ def move_to_pdf_data():
     video = container.find_element_by_class_name("xncc-video-frame")
     src = video.get_attribute("src")
     driver.get(src)
-    time.sleep(3)
     src = driver.find_element_by_class_name("xn-content-frame").get_attribute("src")
     driver.get(src)
-    time.sleep(3)
+    time.sleep(6)
 
-def make_png_file_by_id():
-    i = 2
-    id_tag = "page-container" + str(i)
-    png = driver.find_element_by_id(id_tag).screenshot_as_png
-    string = "img_" + str(i) + ".png"
-    with open("./png/"+string, "wb") as f:
-        f.write(png)
+
 
 def make_png_file():
     classes = driver.find_elements_by_class_name("page-container")
